@@ -1,0 +1,31 @@
+FUNCTIONS
+
+IN () SELECT * FROM klienci WHERE imie IN ('Jan', 'Maciej');
+
+LIKE and matching
+_  one character 
+% whatever number of characters
+
+
+SELECT * FROM employees WHERE birth_date LIKE '____10-%';
+
+JOINS
+
+inner join combines only these rows from both tables which match a given requirement 
+left join all rows from the left table (the one on the top of the query) will be included in the result, no matter if they match
+right join all rows from the right table (the one on the bottom of the query) will be included in the result, no matter if they match
+
+Combine rows from klienci and zamowienia tables where zamowienia.idklienta = klienci.idklienta
+
+SELECT klienci.imie, klienci.nazwisko, klienci.miejscowosc, zamowienia.status 
+FROM zamowienia JOIN klienci ON zamowienia.idklienta = klienci.idklienta;
+
+NESTED QUERIES
+
+We can use IN function
+
+SELECT klienci.imie, klienci.nazwisko FROM klienci WHERE klienci.idklienta IN (
+	SELECT zamowienia.idklienta FROM zamowienia WHERE zamowienia.status = 'oczekiwanie' 
+);
+
+
