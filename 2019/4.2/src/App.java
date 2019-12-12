@@ -14,9 +14,7 @@ public class App {
     }
 
     private static int getFactorial(int n){
-        int factorial = n;
-        for(int i=1; i<n; i++) factorial *= i;
-        return factorial;
+        return n == 0 ? 1 : getFactorial(n -1 ) * n;
     }
 
     private static int getFactorialsSum(String s){
